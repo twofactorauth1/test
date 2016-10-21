@@ -4,8 +4,7 @@ var mysql      = require('mysql');
 var server = require('http').createServer(app);
 var path = require('path'),
     fs = require('fs');
-    var multer = require('multer');
-    
+    var multer = require('multer');    
 
 GLOBAL.connection = mysql.createConnection({
   host     : 'localhost',
