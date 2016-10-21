@@ -48,11 +48,7 @@ router.post('/contactlist', function (req, res) {
          res.send(data);
       });
 });
-//app.post('/upload',[ multer({ dest: './uploads/'}), function(req, res){
-//    console.log(req.body) // form fields
-//    console.log(req.files) // form files
-//    res.status(204).end()
-//}]);
+
 router.get('/save',function(req,res){
     var users = {name:'manish',blood_group:'O+',image:'some.jpg',phone:'987456210',created:'89546854'};
     connection.query("INSERT into users_bd SET ?",users,function(err,ress){
