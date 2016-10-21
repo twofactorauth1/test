@@ -4,7 +4,6 @@ var mysql      = require('mysql');
 var server = require('http').createServer(app);
 var path = require('path'),
     fs = require('fs');
-//    var bodyParser = require('body-parser');
     var multer = require('multer');
     
 
