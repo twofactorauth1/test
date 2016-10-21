@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="j.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.ajax({url: "/contactlist",type:'POST',data:{name:'manish'}, success: function(result){
+                var html = "";
+                var result = JSON.parse(result);
+                for (var i = 0; i < result.length; i++) {
+                     html += "<li>"+result[i].name+" has blood group : "+result[i].blood_group+"</li>";   
+};
+  
+            $("#somid").html(html);
+        }});
+    });
+});
+</script>    
+</head>
+<body>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
+<form action="/upload" method="post" enctype="multipart/form-data">  
+  <label for="file">Select your image:</label>
+  <input type="file" name="file" id="file" />
+  <span class="hint">Supported files: jpg, jpeg, png.</span>
+  <button type="submit">upload</button>
+</form>
+<ul id="somid">
+    
+</ul>
+</body>
+</html>
+
