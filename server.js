@@ -13,9 +13,9 @@ GLOBAL.connection = mysql.createConnection({
   database : 'test2'
 });
  connection.connect();
- var port    =   process.env.PORT || 8000;
+ var port    =   process.env.PORT || 3000;
  
- // get an instance of router
+// get an instance of router
 var router = express.Router();
  // apply the routes to our application
  // route middleware that will happen on every request
@@ -107,5 +107,5 @@ router.get('/user/:name', function(req, res) {
 });
 
 server.listen(port,function(){
-    console.log('listening at '+port);
+    console.log('Magic Happening at Port: '+port);
 });
