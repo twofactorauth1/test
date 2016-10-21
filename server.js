@@ -19,7 +19,15 @@ GLOBAL.connection = mysql.createConnection({
 var router = express.Router();
  // apply the routes to our application
  // route middleware that will happen on every request
-
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname+ '-' + Date.now()+'.jpg')
+    }
+});
+var upload = multer({ storage: storage });
 router.use(function(req, res, next) {
 
 	// log each request to the console
@@ -47,18 +55,10 @@ router.post('/contactlist', function (req, res) {
          res.send(data);
       });
 });
-app.post('/upload', function (req, res) {
-  uploadProfileImgs(req, res, function (err) {
-    if (err) {
-      console.log(err.message);
-      // An error occurred when uploading
-    
-    }
-    console.log('Everything went fine');
-     res.sendFile( __dirname + "/" + "index.html" );
-    // Everything went fine
-  })
-})
+app.post('/upload', upload.single('image'), function (req, res) {
+    console.log("success");
+    res.sendFile( __dirname + "/" + "index.html" );
+});
 router.get('/save',function(req,res){
     var users = {name:'manish',blood_group:'O+',image:'some.jpg',phone:'987456210',created:'89546854'};
     connection.query("INSERT into users_bd SET ?",users,function(err,ress){
