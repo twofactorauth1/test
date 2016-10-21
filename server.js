@@ -5,7 +5,7 @@ var server = require('http').createServer(app);
 var path = require('path'),
     fs = require('fs');
     var multer = require('multer');    
-
+var uploadProfileImgs = multer({dest : 'uploads/'}).single('image');
 GLOBAL.connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -47,7 +47,18 @@ router.post('/contactlist', function (req, res) {
          res.send(data);
       });
 });
-
+app.post('/upload', function (req, res) {
+  uploadProfileImgs(req, res, function (err) {
+    if (err) {
+      console.log(err.message);
+      // An error occurred when uploading
+    
+    }
+    console.log('Everything went fine');
+     res.sendFile( __dirname + "/" + "index.html" );
+    // Everything went fine
+  })
+})
 router.get('/save',function(req,res){
     var users = {name:'manish',blood_group:'O+',image:'some.jpg',phone:'987456210',created:'89546854'};
     connection.query("INSERT into users_bd SET ?",users,function(err,ress){
