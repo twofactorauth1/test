@@ -1,5 +1,8 @@
                                ++++++++++++++++++++++++ Node.js/Express Experiment +++++++++++++++++++++++++
 Please create 'uploads'folder in public directory.
+Installation:
+1.)run npm install to install all the modules.
+2.)run node server.js or gulp start to start the app in your browser.
 A Repo with experiments with Node,Express and various other modules.
 Description for various branches used in the repo.
 
