@@ -10,7 +10,7 @@ GLOBAL.connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'test2'
+  database : 'node-test'
 });
  connection.connect();
  var port    =   process.env.PORT || 3000;
